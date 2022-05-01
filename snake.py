@@ -16,14 +16,18 @@ class Death(BaseException):
 
 
 class Level:
-    POINTS_PER_LEVEL = 10
+    """Object to store and manipulate levels and points in levels.
+    Also responsible for printing the level/point stats bar."""
 
+    # number of apples to eat before going to the next level
+    POINTS_PER_LEVEL = 10
 
     def __init__(self):
         self.level = 1
         self.points = 0
 
     def add_point(self):
+        """Add a point (that is done when an apple is eaten)."""
         self.points += 1
         # after _ points, go to next level
         if self.points > self.POINTS_PER_LEVEL:
@@ -31,15 +35,18 @@ class Level:
             self.next()
 
     def next(self):
+        """Go to the next level."""
         self.level += 1
 
     def delay(self):
+        """Returns a delay (the time between each update of the snake) that
+        depends on the level."""
         return 0.1+1/(20+self.level)
 
     def show(self, stdscr):
         """Show the level info in the stdscr."""
-        info = f"level : {self.level} ┃ points: ["
-        info += "Ǒ"*self.points + " "*(self.POINTS_PER_LEVEL-self.points) + "]"
+        info = f"level : {self.level}   │   points: (_"
+        info += "Ǒ_"*self.points + "._"*(self.POINTS_PER_LEVEL-self.points) + ")"
         stdscr.addstr(0, 0, info)
 
 
