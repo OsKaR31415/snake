@@ -1,3 +1,4 @@
+#!python3
 from time import sleep, time
 from random import randint
 import curses
