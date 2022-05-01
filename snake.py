@@ -45,8 +45,8 @@ class Level:
 
     def show(self, stdscr):
         """Show the level info in the stdscr."""
-        info = f"level : {self.level}   │   points: (_"
-        info += "Ǒ_"*self.points + "._"*(self.POINTS_PER_LEVEL-self.points) + ")"
+        info = f"level : {self.level}   │   points: ┃"
+        info += "Ǒ┃"*self.points + " ┃"*(self.POINTS_PER_LEVEL-self.points)
         stdscr.addstr(0, 0, info)
 
 
